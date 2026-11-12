@@ -1,0 +1,8 @@
+build/
+build-*/
+.cache/
+.DS_Store
+web/index.html
+web/index.js
+web/index.wasm
+

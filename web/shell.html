@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snowflake 3D - Reiter CA (WebGPU + Dear ImGui)</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #04060f; overflow: hidden; color: #cde; font-family: sans-serif; }
+    canvas#canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; outline: none; }
+    #msg { position: fixed; top: 40%; width: 100%; text-align: center; display: none; }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" tabindex="-1" oncontextmenu="event.preventDefault()"></canvas>
+  <div id="msg">WebGPU is not available in this browser (try Chrome / Edge 113+ or Safari 18+).</div>
+  <script>
+    if (!navigator.gpu) document.getElementById('msg').style.display = 'block';
+    var Module = {
+      canvas: document.getElementById('canvas'),
+      print: function (t) { console.log(t); },
+      printErr: function (t) { console.error(t); }
+    };
+    function fit() {
+      var c = Module.canvas, d = window.devicePixelRatio || 1;
+      c.width = Math.floor(window.innerWidth * d);
+      c.height = Math.floor(window.innerHeight * d);
+    }
+    window.addEventListener('resize', fit);
+    fit();
+  </script>
+  {{{ SCRIPT }}}
+</body>
+</html>
+
